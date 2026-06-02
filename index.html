@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para mi corazón hermoso ❤️</title>
+
+  <style>
+    body {
+  background-color: #ffe4e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.contenedor-regalo {
+  position: relative;
+  cursor: pointer;
+  padding-top: 100px;
+}
+
+.sobre {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background-color: #c8392b; 
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.tapa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 110px solid #d94332;
+  transform-origin: top;
+  transition: transform 0.5s ease;
+  z-index: 3;
+}
+
+.cuerpo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 150px solid #bc3124;
+  border-right: 150px solid #bc3124;
+  border-bottom: 100px solid #b1291c;
+  border-top: 100px solid transparent;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+}
+
+.carta {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: 270px;
+  height: 180px;
+  background-color: #ffffff; 
+  border-radius: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease;
+  z-index: 1;
+  overflow-y: auto; 
+}
+
+.carta h1 {
+  font-size: 16px;
+  color: #c8392b;
+  margin-top: 0;
+  text-align: center;
+}
+
+.carta p {
+  font-size: 12px;
+  color: #333333;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.carta .despedida, .carta .te-amo {
+  text-align: right;
+  font-size: 11px;
+}
+
+/* La tapa se abre hacia arriba */
+.contenedor-regalo:hover .tapa {
+  transform: rotateX(180deg);
+  z-index: 0; 
+}
+
+/* La carta sube mágicamente del sobre */
+.contenedor-regalo:hover .carta {
+  transform: translateY(-120px);
+  z-index: 4;
+}
+
+/* Estilos de los corazones flotantes */
+.corazon-flotante {
+  position: fixed;
+  bottom: -20px;
+  z-index: 10;
+  pointer-events: none;
+  animation: flotarHaciaArriba linear forwards; 
+}
+
+/* Animación de los corazones */
+@keyframes flotarHaciaArriba {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-105vh) rotate(360deg);
+    opacity: 0;
+  }
+  .contenedor-regalo:active .tapa, 
+.contenedor-regalo:hover .tapa {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.contenedor-regalo:active .carta,
+.contenedor-regalo:hover .carta {
+  transform: translateY(-120px);
+  z-index: 4;
+}
+}
+  </style>
+
+  
+</head>
+<body>
+  <div class="contenedor-regalo">
+    <div class="sobre">
+      <div class="tapa"></div>
+      <div class="cuerpo"></div>
+      
+      <div class="carta">
+        <h1>Para mi corazón hermoso❤️</h1>
+        <p>Si intentara describir con palabras sencillas la magnitud de lo que significas para mí, inevitablemente me quedaría corto. Hay realidades tan inmensas que ningún lenguaje alcanza a contenerlas por completo, y tú eres una de ellas.</p>
+        <p>Porque, si debo hablar con la precisión que merece alguien tan importante, diría que eres el impulso que mantiene el ritmo de mi existencia; la fuerza silenciosa que armoniza cada aspecto de mi vida y permite que todo funcione con equilibrio.</p>
+        <p>Eres mi ínsula, el centro donde convergen las emociones, las sensaciones y la conciencia de lo que verdaderamente importa. Eres mi peritoneo, capaz de sostener y proteger incluso aquello que parece imposible de mantener en pie cuando llegan los días difíciles.</p>
+        <p>Eres la sinapsis que conecta mis pensamientos con mis sentimientos, la homeostasis que devuelve el orden cuando todo parece desorganizarse y el punto de referencia que me orienta cuando pierdo el rumbo.</p>
+        <p>Eres el detector de mi tomógrafo, ese elemento indispensable que transforma señales invisibles en imágenes llenas de significado. Porque, por más sofisticado que sea el sistema, sin el detector no existe imagen posible... de la misma manera, sin ti, muchas de las cosas que dan sentido a mi vida simplemente perderían su claridad.</p>
+        <p class="despedida"><b>Atentamente:</b> Sharick.</p>
+        <p class="te-amo"><b>Te amo mucho. &lt;3 </b></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Buscamos el sobre en la pantalla
+const sobre = document.querySelector('.contenedor-regalo');
+
+// Cuando el mouse pase por encima, soltamos corazones
+sobre.addEventListener('mouseenter', () => {
+  // Vamos a soltar 15 corazones seguidos
+  for (let i = 0; i < 15; i++) {
+    setTimeout(crearCorazon, i * 150);
+  }
+});
+
+function crearCorazon() {
+  // Creamos un corazón
+  const corazon = document.createElement('div');
+  corazon.classList.add('corazon-flotante');
+  corazon.innerText = '❤️';
+  
+  // Posición aleatoria horizontal
+  corazon.style.left = Math.random() * 100 + 'vw';
+  
+  // Tamaño aleatorio
+  corazon.style.fontSize = Math.random() * 20 + 10 + 'px';
+  
+  // Velocidad de animación aleatoria
+  corazon.style.animationDuration = Math.random() * 2 + 2 + 's';
+  
+  // Agregamos el corazón al cuerpo
+  document.body.appendChild(corazon);
+  
+  // Lo borramos después de que termine la animación
+  setTimeout(() => {
+    corazon.remove();
+  }, 4000);
+}
+  </script>
+</body>
+</html>
